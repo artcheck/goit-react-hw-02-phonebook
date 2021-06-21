@@ -1,8 +1,8 @@
 import React from "react";
-import PropTypes, { number } from "prop-types";
+import PropTypes from "prop-types";
 import styled from "./ContactList.module.css";
 
-const ContactList = ({ contacts, handleDelete }) => {
+const ContactList = ({ contacts=[], handleDelete }) => {
   return (
     <ul className={styled.list}>
       {contacts.map(({ id, name, number }) => (
@@ -28,7 +28,7 @@ ContactList.prototypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
+      number: PropTypes.number.isRequired,
     })
   ),
 

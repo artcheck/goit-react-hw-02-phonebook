@@ -6,25 +6,16 @@ import Filter from "./filter/Filter";
 
 class App extends Component {
   state = {
-    contacts: [],
+    contacts: [
+      { id: uuid(), name: "Rosie Simpson", number: "459-12-56" },
+      { id: uuid(), name: "Hermione Kline", number: "443-89-12" },
+      { id: uuid(), name: "Eden Clements", number: "645-17-79" },
+      { id: uuid(), name: "Annie Copeland", number: "227-91-26" },
+    ],
     filter: "",
   };
 
-  componentDidMount() {
-    console.log("[componentDidMount]");
-    const contacts = localStorage.getItem("contacts");
-    if (contacts) {
-      const parsedContacts = JSON.parse(contacts);
-      this.setState({ contacts: parsedContacts });
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log("[componentDidUpdate]");
-    if (prevState.contacts !== this.state.contacts) {
-      localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
-    }
-  }
+ 
 
   handleSubmit = (name, number) => {
     const isDuplicate = this.state.contacts.some((item) => item.name === name);
